@@ -1,0 +1,3259 @@
+Selected Files Code Dump 
+=============================================== 
+ 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\globals.css 
+-------------------------------------------------- 
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+ 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\layout.tsx 
+-------------------------------------------------- 
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { jameelNoori } from "@/lib/fonts";
+import "./globals.css";
+
+const baseUrl = 'https://al-asr.centers.pk';
+
+/**
+ * Root Layout Component - Main layout for the entire application
+ * Features:
+ * - SEO metadata and Open Graph tags
+ * - Theme provider for dark/light mode
+ * - Font optimization
+ * - Critical CSS loading
+ */
+
+export const metadata = {
+  title: "Al-Asr ( Islamic Service )",
+  description: "Islamic Services, Calendar Events, and Community Programs",
+  metadataBase: new URL(baseUrl),
+  
+  openGraph: {
+    title: "Al-Asr ( Islamic Service )",
+    description: "Islamic Services, Calendar Events, and Community Programs",
+    url: baseUrl,
+    siteName: "Al-Asr Islamic Service",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Al-Asr Islamic Service",
+        type: 'image/png',
+      },
+    ],
+    locale: "ur_PK",
+    type: "website",
+  },
+  
+  twitter: {
+    card: "summary_large_image",
+    title: "Al-Asr ( Islamic Service )",
+    description: "Islamic Services, Calendar Events, and Community Programs",
+    images: ['/og-image.png'],
+  },
+  
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: baseUrl,
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ur" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Critical CSS Inline */}
+        <style 
+          dangerouslySetInnerHTML={{
+            __html: `
+              /* Critical CSS for above-the-fold content */
+              body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+            `
+          }}
+          suppressHydrationWarning={true}
+        />
+        
+        {/* Preload critical resources */}
+        <link rel="preconnect" href="https://admin-al-asr.centers.pk" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://admin-al-asr.centers.pk" />
+        
+        {/* Additional explicit OG image tags */}
+        <meta property="og:image" content={`${baseUrl}/og-image.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="Al-Asr Islamic Service" />
+        
+        {/* Twitter Card image */}
+        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
+        <meta name="twitter:image:alt" content="Al-Asr Islamic Service" />
+        
+        {/* Prevent dark reader from modifying styles */}
+        <meta name="darkreader-lock" />
+      </head>
+      <body className={`${jameelNoori.variable} antialiased`} suppressHydrationWarning>
+        <ThemeProvider>
+          <main role="main" id="main-content" tabIndex={-1}>
+            {children}
+          </main>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\layout.tsx 
+-------------------------------------------------- 
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { jameelNoori } from "@/lib/fonts";
+import "./globals.css";
+
+const baseUrl = 'https://al-asr.centers.pk';
+
+/**
+ * Root Layout Component - Main layout for the entire application
+ * Features:
+ * - SEO metadata and Open Graph tags
+ * - Theme provider for dark/light mode
+ * - Font optimization
+ * - Critical CSS loading
+ */
+
+export const metadata = {
+  title: "Al-Asr ( Islamic Service )",
+  description: "Islamic Services, Calendar Events, and Community Programs",
+  metadataBase: new URL(baseUrl),
+  
+  openGraph: {
+    title: "Al-Asr ( Islamic Service )",
+    description: "Islamic Services, Calendar Events, and Community Programs",
+    url: baseUrl,
+    siteName: "Al-Asr Islamic Service",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Al-Asr Islamic Service",
+        type: 'image/png',
+      },
+    ],
+    locale: "ur_PK",
+    type: "website",
+  },
+  
+  twitter: {
+    card: "summary_large_image",
+    title: "Al-Asr ( Islamic Service )",
+    description: "Islamic Services, Calendar Events, and Community Programs",
+    images: ['/og-image.png'],
+  },
+  
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: baseUrl,
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ur" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Critical CSS Inline */}
+        <style 
+          dangerouslySetInnerHTML={{
+            __html: `
+              /* Critical CSS for above-the-fold content */
+              body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+            `
+          }}
+          suppressHydrationWarning={true}
+        />
+        
+        {/* Preload critical resources */}
+        <link rel="preconnect" href="https://admin-al-asr.centers.pk" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://admin-al-asr.centers.pk" />
+        
+        {/* Additional explicit OG image tags */}
+        <meta property="og:image" content={`${baseUrl}/og-image.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="Al-Asr Islamic Service" />
+        
+        {/* Twitter Card image */}
+        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
+        <meta name="twitter:image:alt" content="Al-Asr Islamic Service" />
+        
+        {/* Prevent dark reader from modifying styles */}
+        <meta name="darkreader-lock" />
+      </head>
+      <body className={`${jameelNoori.variable} antialiased`} suppressHydrationWarning>
+        <ThemeProvider>
+          <main role="main" id="main-content" tabIndex={-1}>
+            {children}
+          </main>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\page.tsx 
+-------------------------------------------------- 
+import BlogList from "@/components/blog/BlogList";
+import Header from "@/components/layout/Header";
+
+/**
+ * Home Page Component - Main landing page
+ * Features:
+ * - Header with hero section
+ * - Blog list with category filtering
+ * - Semantic HTML structure
+ * - Accessible landmarks
+ */
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main role="main"> {/* Add main landmark */}
+        <BlogList />
+      </main>
+    </>
+  )
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\page.tsx 
+-------------------------------------------------- 
+import BlogList from "@/components/blog/BlogList";
+import Header from "@/components/layout/Header";
+
+/**
+ * Home Page Component - Main landing page
+ * Features:
+ * - Header with hero section
+ * - Blog list with category filtering
+ * - Semantic HTML structure
+ * - Accessible landmarks
+ */
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main role="main"> {/* Add main landmark */}
+        <BlogList />
+      </main>
+    </>
+  )
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\posts\PostClient.jsx 
+-------------------------------------------------- 
+'use client'
+import Image from 'next/image';
+import Link from 'next/link';
+import Header from '@/components/layout/Header';
+import SocialShareButtons from '@/components/shared/SocialShareButtons';
+
+/**
+ * Post Client Component - Client-side functionality for blog posts
+ * Features:
+ * - RTL/LTR text direction handling
+ * - Social sharing functionality
+ * - Meta information display
+ * - Back navigation
+ */
+
+// RTL Text Detection Function
+function isRTLText(text) {
+  if (!text) return false;
+  const rtlRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+  return rtlRegex.test(text);
+}
+
+// Post Meta Information Component
+function PostMetaInfo({ post, isRTL }) {
+  const readingTime = (content) => {
+    const text = content.replace(/<[^>]*>/g, '');
+    const words = text.split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+    return `${minutes} min read`;
+  };
+
+  return (
+    <div className={`bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-6 ${isRTL ? 'text-right' : 'text-left'}`} dir={isRTL ? "rtl" : "ltr"}>
+      <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600 dark:text-gray-300`}>
+        <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="text-red-900 dark:text-red-400">📖</span>
+          <span>{readingTime(post.content)}</span>
+        </div>
+        
+        <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="text-red-900 dark:text-red-400">📅</span>
+          <span>Published on {new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          })}</span>
+        </div>
+        
+        <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="text-red-900 dark:text-red-400">👤</span>
+          <span>By {post.author?.node?.name || 'Admin'}</span>
+        </div>
+      </div>
+      
+      {post.categories.nodes.length > 0 && (
+        <div className={`mt-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+          <span className={`text-sm font-medium text-gray-700 dark:text-gray-300 ${isRTL ? 'ml-2' : 'mr-2'}`}>
+            Categories:
+          </span>
+          {post.categories.nodes.map((category, index) => (
+            <span 
+              key={category.slug} 
+              className={`inline-block bg-red-900 dark:bg-red-800 text-white text-xs px-3 py-1 rounded-full ${isRTL ? 'ml-2' : 'mr-2'} mb-2`}
+            >
+              {category.name}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Main Post Client Component
+export default function PostClient({ post, slug, isUrdu }) {
+  // Use the isUrdu prop from server-side detection
+  const isTitleRTL = isUrdu !== undefined ? isUrdu : isRTLText(post.title);
+  const isContentRTL = isRTLText(post.content);
+  const currentIsRTL = isTitleRTL || isContentRTL;
+
+  console.log('🔍 Post Language Detection:', {
+    title: post.title,
+    isUrduProp: isUrdu,
+    isTitleRTL,
+    isContentRTL,
+    finalIsRTL: currentIsRTL
+  });
+
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Header />
+      
+      <div className="py-8">
+        <article 
+          className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          dir={currentIsRTL ? "rtl" : "ltr"}
+        >
+          {post.featuredImage?.node?.sourceUrl && (
+            <div className="relative h-96 w-full">
+              <Image
+                src={post.featuredImage.node.sourceUrl}
+                alt={post.featuredImage.node.altText || post.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+              />
+            </div>
+          )}
+
+          <div className="p-6 md:p-8">
+            <h1 
+              className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight ${
+                currentIsRTL ? 'text-right' : 'text-left'
+              }`}
+            >
+              {post.title}
+            </h1>
+
+            <PostMetaInfo post={post} isRTL={currentIsRTL} />
+
+            <div 
+              className={`wp-content max-w-none text-gray-700 dark:text-gray-300 ${
+                currentIsRTL ? 'urdu-arabic-content' : 'english-content'
+              }`}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
+            {/* Social Share Buttons */}
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <SocialShareButtons title={post.title} slug={slug} excerpt={post.excerpt} />
+            </div>
+
+            {/* Back to Home Button */}
+            <div className={`mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 ${currentIsRTL ? 'text-right' : 'text-left'}`}>
+              <Link
+                href="/"
+                className={`inline-flex items-center text-red-900 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-semibold transition-colors ${
+                  currentIsRTL ? 'flex-row-reverse' : ''
+                }`}
+              >
+                <svg 
+                  className={`${currentIsRTL ? 'ml-2 rotate-180' : 'mr-2'} w-4 h-4`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to All Posts
+              </Link>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\posts\PostClient.jsx 
+-------------------------------------------------- 
+'use client'
+import Image from 'next/image';
+import Link from 'next/link';
+import Header from '@/components/layout/Header';
+import SocialShareButtons from '@/components/shared/SocialShareButtons';
+
+/**
+ * Post Client Component - Client-side functionality for blog posts
+ * Features:
+ * - RTL/LTR text direction handling
+ * - Social sharing functionality
+ * - Meta information display
+ * - Back navigation
+ */
+
+// RTL Text Detection Function
+function isRTLText(text) {
+  if (!text) return false;
+  const rtlRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+  return rtlRegex.test(text);
+}
+
+// Post Meta Information Component
+function PostMetaInfo({ post, isRTL }) {
+  const readingTime = (content) => {
+    const text = content.replace(/<[^>]*>/g, '');
+    const words = text.split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+    return `${minutes} min read`;
+  };
+
+  return (
+    <div className={`bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-6 ${isRTL ? 'text-right' : 'text-left'}`} dir={isRTL ? "rtl" : "ltr"}>
+      <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600 dark:text-gray-300`}>
+        <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="text-red-900 dark:text-red-400">📖</span>
+          <span>{readingTime(post.content)}</span>
+        </div>
+        
+        <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="text-red-900 dark:text-red-400">📅</span>
+          <span>Published on {new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          })}</span>
+        </div>
+        
+        <div className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="text-red-900 dark:text-red-400">👤</span>
+          <span>By {post.author?.node?.name || 'Admin'}</span>
+        </div>
+      </div>
+      
+      {post.categories.nodes.length > 0 && (
+        <div className={`mt-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+          <span className={`text-sm font-medium text-gray-700 dark:text-gray-300 ${isRTL ? 'ml-2' : 'mr-2'}`}>
+            Categories:
+          </span>
+          {post.categories.nodes.map((category, index) => (
+            <span 
+              key={category.slug} 
+              className={`inline-block bg-red-900 dark:bg-red-800 text-white text-xs px-3 py-1 rounded-full ${isRTL ? 'ml-2' : 'mr-2'} mb-2`}
+            >
+              {category.name}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Main Post Client Component
+export default function PostClient({ post, slug, isUrdu }) {
+  // Use the isUrdu prop from server-side detection
+  const isTitleRTL = isUrdu !== undefined ? isUrdu : isRTLText(post.title);
+  const isContentRTL = isRTLText(post.content);
+  const currentIsRTL = isTitleRTL || isContentRTL;
+
+  console.log('🔍 Post Language Detection:', {
+    title: post.title,
+    isUrduProp: isUrdu,
+    isTitleRTL,
+    isContentRTL,
+    finalIsRTL: currentIsRTL
+  });
+
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Header />
+      
+      <div className="py-8">
+        <article 
+          className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          dir={currentIsRTL ? "rtl" : "ltr"}
+        >
+          {post.featuredImage?.node?.sourceUrl && (
+            <div className="relative h-96 w-full">
+              <Image
+                src={post.featuredImage.node.sourceUrl}
+                alt={post.featuredImage.node.altText || post.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+              />
+            </div>
+          )}
+
+          <div className="p-6 md:p-8">
+            <h1 
+              className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight ${
+                currentIsRTL ? 'text-right' : 'text-left'
+              }`}
+            >
+              {post.title}
+            </h1>
+
+            <PostMetaInfo post={post} isRTL={currentIsRTL} />
+
+            <div 
+              className={`wp-content max-w-none text-gray-700 dark:text-gray-300 ${
+                currentIsRTL ? 'urdu-arabic-content' : 'english-content'
+              }`}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
+            {/* Social Share Buttons */}
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <SocialShareButtons title={post.title} slug={slug} excerpt={post.excerpt} />
+            </div>
+
+            {/* Back to Home Button */}
+            <div className={`mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 ${currentIsRTL ? 'text-right' : 'text-left'}`}>
+              <Link
+                href="/"
+                className={`inline-flex items-center text-red-900 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-semibold transition-colors ${
+                  currentIsRTL ? 'flex-row-reverse' : ''
+                }`}
+              >
+                <svg 
+                  className={`${currentIsRTL ? 'ml-2 rotate-180' : 'mr-2'} w-4 h-4`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to All Posts
+              </Link>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\app\posts\[slug]\page.js 
+-------------------------------------------------- 
+import { GraphQLClient } from 'graphql-request';
+import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import PostClient from './PostClient';
+
+const client = new GraphQLClient('https://admin-al-asr.centers.pk/graphql');
+
+/**
+ * Dynamic Post Page - Server component for individual blog posts
+ * Features:
+ * - Static generation with generateStaticParams
+ * - SEO optimized metadata
+ * - RTL language detection
+ * - Error handling
+ */
+
+// Better RTL detection function
+function isRTLText(text) {
+  if (!text) return false;
+  const rtlRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+  return rtlRegex.test(text);
+}
+
+export async function generateStaticParams() {
+  const query = `{ posts { nodes { slug } } }`;
+  try {
+    const data = await client.request(query);
+    return data.posts.nodes.map((post) => ({ slug: post.slug }));
+  } catch (error) {
+    return [];
+  }
+}
+
+async function getPost(slug) {
+  const query = `
+    query GetPost($slug: ID!) {
+      post(id: $slug, idType: SLUG) {
+        id 
+        title 
+        content 
+        date
+        excerpt
+        featuredImage { 
+          node { 
+            sourceUrl 
+            altText 
+          } 
+        }
+        categories { 
+          nodes { 
+            name 
+            slug 
+          } 
+        }
+        author { 
+          node { 
+            name 
+          } 
+        }
+      }
+    }
+  `;
+  try {
+    const data = await client.request(query, { slug });
+    return data.post;
+  } catch (error) {
+    return null;
+  }
+}
+
+// Simple PostPageSkeleton
+const PostPageSkeleton = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header Skeleton */}
+      <div className="py-5 px-5 md:px-12 lg:px-28 bg-linear-to-b from-white to-red-50 dark:from-gray-800 dark:to-gray-700">
+        <div className="flex justify-between items-center">
+          <div className="w-[130px] sm:w-[160px] h-[60px] bg-gray-300 dark:bg-gray-600 rounded animate-pulse"></div>
+          <div className="w-0"></div>
+        </div>
+        
+        <div className="text-center my-12">
+          <div className="h-12 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mb-4 mx-auto max-w-md"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-6 mx-auto max-w-2xl"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-4 mx-auto max-w-xl w-3/4"></div>
+          <div className="h-12 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-8 mx-auto max-w-sm"></div>
+        </div>
+      </div>
+
+      {/* Post Content Skeleton */}
+      <div className="py-8">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden animate-pulse">
+          <div className="h-96 w-full bg-gray-300 dark:bg-gray-700"></div>
+          <div className="p-6 md:p-8">
+            <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+            <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded mb-6 w-1/2"></div>
+            <div className="space-y-4">
+              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// PostContent component
+async function PostContent({ slug }) {
+  const post = await getPost(slug);
+  if (!post) notFound();
+
+  // Better RTL detection - check both title and content
+  const isTitleRTL = isRTLText(post.title);
+  const isContentRTL = isRTLText(post.content);
+  const isUrdu = isTitleRTL || isContentRTL;
+
+  console.log('🔄 Server-side RTL Detection:', {
+    title: post.title,
+    isTitleRTL,
+    isContentRTL,
+    finalIsRTL: isUrdu
+  });
+
+  return <PostClient post={post} slug={slug} isUrdu={isUrdu} />;
+}
+
+export default async function PostPage({ params }) {
+  const slug = (await params).slug;
+  
+  return (
+    <Suspense fallback={<PostPageSkeleton />}>
+      <PostContent slug={slug} />
+    </Suspense>
+  )
+}
+
+// Updated generateMetadata function with proper PNG OG image
+export async function generateMetadata({ params }) {
+  const slug = (await params).slug;
+  const post = await getPost(slug);
+  
+  const baseUrl = 'https://al-asr.centers.pk';
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found | Al-Asr ( Islamic Service )',
+      description: 'The requested post was not found.',
+      metadataBase: new URL(baseUrl),
+      openGraph: {
+        title: 'Post Not Found | Al-Asr ( Islamic Service )',
+        description: 'The requested post was not found.',
+        url: `${baseUrl}/posts/${slug}`,
+        siteName: 'Al-Asr ( Islamic Service )',
+        images: [
+          {
+            url: `${baseUrl}/og-image.png`,
+            width: 1200,
+            height: 630,
+            alt: 'Al-Asr Islamic Service',
+            type: 'image/png',
+          },
+        ],
+        locale: 'ur_PK',
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Post Not Found | Al-Asr ( Islamic Service )',
+        description: 'The requested post was not found.',
+        images: [`${baseUrl}/og-image.png`],
+      },
+      alternates: {
+        canonical: `${baseUrl}/posts/${slug}`,
+      },
+    };
+  }
+
+  // Clean excerpt for description
+  const cleanExcerpt = post.excerpt?.replace(/<[^>]*>/g, '').substring(0, 160) + '...' || 
+                      post.content?.replace(/<[^>]*>/g, '').substring(0, 160) + '...' ||
+                      'Islamic services and community programs from Al-Asr ( Islamic Service )';
+
+  // Use post image or fallback to default OG image (PNG)
+  const imageUrl = post.featuredImage?.node?.sourceUrl || `${baseUrl}/og-image.png`;
+  const fullUrl = `${baseUrl}/posts/${slug}`;
+
+  // Ensure image URL is absolute
+  const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `${baseUrl}${imageUrl}`;
+
+  // Determine image type based on URL
+  const imageType = absoluteImageUrl.includes('.png') ? 'image/png' : 
+                   absoluteImageUrl.includes('.jpg') || absoluteImageUrl.includes('.jpeg') ? 'image/jpeg' : 
+                   'image/png';
+
+  const metadata = {
+    title: `${post.title} | Al-Asr ( Islamic Service )`,
+    description: cleanExcerpt,
+    metadataBase: new URL(baseUrl),
+    
+    // Open Graph Meta Tags for WhatsApp/Facebook
+    openGraph: {
+      title: post.title,
+      description: cleanExcerpt,
+      url: fullUrl,
+      siteName: 'Al-Asr ( Islamic Service )',
+      images: [
+        {
+          url: absoluteImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.featuredImage?.node?.altText || post.title,
+          type: imageType,
+        },
+      ],
+      locale: 'ur_PK',
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author?.node?.name || 'Al-Asr ( Islamic Service )'],
+    },
+
+    // Twitter Card Meta Tags
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: cleanExcerpt,
+      images: [absoluteImageUrl],
+    },
+
+    // Additional Meta Tags
+    alternates: {
+      canonical: fullUrl,
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    // Additional OG properties for better compatibility
+    other: {
+      'og:image:type': imageType,
+      'og:image:secure_url': absoluteImageUrl,
+    }
+  };
+
+  console.log('🔍 Generated Metadata for Post:', {
+    title: metadata.title,
+    description: metadata.description,
+    image: absoluteImageUrl,
+    imageType: imageType,
+    url: fullUrl
+  });
+
+  return metadata;
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\BlogItem.jsx 
+-------------------------------------------------- 
+import Link from 'next/link'
+import React, { useState, useEffect } from 'react'
+import SocialShareButtons from '@/components/shared/SocialShareButtons'
+
+/**
+ * Blog Item Component - Displays individual blog post card
+ * Features:
+ * - LCP optimized images
+ * - RTL/LTR text detection
+ * - Social sharing
+ * - Loading states
+ * - SEO friendly
+ */
+
+// Detect if text is Urdu or Arabic (RTL languages)
+function isRTLText(text) {
+  if (!text) return false;
+  const rtlRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+  return rtlRegex.test(text);
+}
+
+const BlogItem = ({ title, excerpt, categories, featuredImage, date, slug, index = 0 }) => {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [showSocialMenu, setShowSocialMenu] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
+  
+  // Strip HTML tags from excerpt and limit length
+  const cleanExcerpt = excerpt 
+    ? excerpt.replace(/<[^>]*>/g, '').substring(0, 120) + '...'
+    : 'Read more about this post...';
+  
+  // Get first category or default
+  const category = categories && categories.length > 0 ? categories[0].name : 'General';
+  
+  // Format date
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+
+  // Detect language and text direction
+  const isRTL = isRTLText(title);
+  const excerptIsRTL = isRTLText(cleanExcerpt);
+
+  useEffect(() => {
+    if (featuredImage?.sourceUrl) {
+      setImageSrc(featuredImage.sourceUrl);
+      setImageLoading(true);
+      setImageError(false);
+    }
+  }, [featuredImage?.sourceUrl]);
+
+  const handleImageError = () => {
+    console.log('❌ Image failed to load:', featuredImage?.sourceUrl);
+    setImageError(true);
+    setImageLoading(false);
+    setImageSrc('');
+  };
+
+  const handleImageLoad = () => {
+    console.log('✅ Image loaded successfully');
+    setImageLoading(false);
+  };
+
+  // Check if we should show image
+  const shouldShowImage = imageSrc && !imageError;
+
+  // LCP Optimization: First 3 images should be high priority
+  const isLCPCandidate = index < 3;
+
+  return (
+    <div className='max-w-[330px] bg-white dark:bg-gray-800 border border-red-900 dark:border-red-800 hover:shadow-[-7px_7px_0px_#8b0000bb] dark:hover:shadow-[-7px_7px_0px_#7f1d1d] transition-all duration-300 cursor-pointer mx-auto group'>
+      <Link href={`/posts/${slug}`}>
+        <div className="relative h-48 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+          {shouldShowImage ? (
+            <>
+              <img 
+                src={imageSrc} 
+                alt={featuredImage?.altText || title} 
+                className="w-full h-full border-b border-red-900 dark:border-red-800 object-cover group-hover:scale-105 transition-transform duration-300"
+                onError={handleImageError}
+                onLoad={handleImageLoad}
+                loading={isLCPCandidate ? "eager" : "lazy"}
+                decoding="async"
+                fetchPriority={isLCPCandidate ? "high" : "auto"}
+                width="328"
+                height="272"
+              />
+              {imageLoading && (
+                <div className="absolute inset-0 bg-gray-300 dark:bg-gray-600 animate-pulse z-10 flex items-center justify-center">
+                  <div className="text-gray-500 dark:text-gray-400 text-sm">Loading...</div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className='flex items-center justify-center h-full bg-linear-to-br from-red-50 to-red-100 dark:from-gray-700 dark:to-gray-600'>
+              <div className='text-center p-4'>
+                <svg className="w-12 h-12 text-red-300 dark:text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className='text-red-400 dark:text-gray-300 text-sm'>
+                  {imageError ? 'Failed to load image' : 'No Image Available'}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </Link>
+      
+      {/* Category and Social Share Row */}
+      <div className='px-5 pt-5 flex justify-between items-center'>
+        <span className='inline-block bg-red-900 dark:bg-red-800 text-white text-xs px-3 py-1 rounded-full font-medium'>
+          {category}
+        </span>
+        
+        {/* Minimal Social Share Button */}
+        <div className="relative">
+          <button 
+            className="p-2 bg-gray-100 dark:bg-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            onClick={() => setShowSocialMenu(!showSocialMenu)}
+            aria-label="Share options"
+            aria-expanded={showSocialMenu}
+            aria-haspopup="true"
+          >
+            <svg className="w-4 h-4 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+            </svg>
+          </button>
+          
+          {/* Minimal Share Dropdown */}
+          {showSocialMenu && (
+            <div className="absolute right-0 top-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3 z-10">
+              <SocialShareButtons title={title} slug={slug} excerpt={cleanExcerpt} />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className='p-5'>
+        <Link href={`/posts/${slug}`}>
+          <h3 
+            className={`mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-2 min-h-[56px] leading-tight group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-200 ${
+              isRTL ? 'text-right' : 'text-left'
+            }`}
+            dir={isRTL ? 'rtl' : 'ltr'}
+          >
+            {title}
+          </h3>
+        </Link>
+        
+        <p 
+          className={`mb-4 text-sm text-gray-600 dark:text-gray-300 line-clamp-3 min-h-[60px] leading-relaxed ${
+            excerptIsRTL ? 'text-right' : 'text-left'
+          }`}
+          dir={excerptIsRTL ? 'rtl' : 'ltr'}
+        >
+          {cleanExcerpt}
+        </p>
+        
+        <div className='flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-700'>
+          <span className='text-xs text-gray-500 dark:text-gray-400 font-medium'>
+            {formattedDate}
+          </span>
+          <Link 
+            href={`/posts/${slug}`}
+            className='inline-flex items-center font-medium text-red-900 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors text-sm group/link'
+            aria-label={`Read more about ${title}`}
+          >
+            Read More
+            <svg className='ml-2 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform' fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default BlogItem 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\BlogItem.jsx 
+-------------------------------------------------- 
+import Link from 'next/link'
+import React, { useState, useEffect } from 'react'
+import SocialShareButtons from '@/components/shared/SocialShareButtons'
+
+/**
+ * Blog Item Component - Displays individual blog post card
+ * Features:
+ * - LCP optimized images
+ * - RTL/LTR text detection
+ * - Social sharing
+ * - Loading states
+ * - SEO friendly
+ */
+
+// Detect if text is Urdu or Arabic (RTL languages)
+function isRTLText(text) {
+  if (!text) return false;
+  const rtlRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0590-\u05FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+  return rtlRegex.test(text);
+}
+
+const BlogItem = ({ title, excerpt, categories, featuredImage, date, slug, index = 0 }) => {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [showSocialMenu, setShowSocialMenu] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
+  
+  // Strip HTML tags from excerpt and limit length
+  const cleanExcerpt = excerpt 
+    ? excerpt.replace(/<[^>]*>/g, '').substring(0, 120) + '...'
+    : 'Read more about this post...';
+  
+  // Get first category or default
+  const category = categories && categories.length > 0 ? categories[0].name : 'General';
+  
+  // Format date
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+
+  // Detect language and text direction
+  const isRTL = isRTLText(title);
+  const excerptIsRTL = isRTLText(cleanExcerpt);
+
+  useEffect(() => {
+    if (featuredImage?.sourceUrl) {
+      setImageSrc(featuredImage.sourceUrl);
+      setImageLoading(true);
+      setImageError(false);
+    }
+  }, [featuredImage?.sourceUrl]);
+
+  const handleImageError = () => {
+    console.log('❌ Image failed to load:', featuredImage?.sourceUrl);
+    setImageError(true);
+    setImageLoading(false);
+    setImageSrc('');
+  };
+
+  const handleImageLoad = () => {
+    console.log('✅ Image loaded successfully');
+    setImageLoading(false);
+  };
+
+  // Check if we should show image
+  const shouldShowImage = imageSrc && !imageError;
+
+  // LCP Optimization: First 3 images should be high priority
+  const isLCPCandidate = index < 3;
+
+  return (
+    <div className='max-w-[330px] bg-white dark:bg-gray-800 border border-red-900 dark:border-red-800 hover:shadow-[-7px_7px_0px_#8b0000bb] dark:hover:shadow-[-7px_7px_0px_#7f1d1d] transition-all duration-300 cursor-pointer mx-auto group'>
+      <Link href={`/posts/${slug}`}>
+        <div className="relative h-48 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+          {shouldShowImage ? (
+            <>
+              <img 
+                src={imageSrc} 
+                alt={featuredImage?.altText || title} 
+                className="w-full h-full border-b border-red-900 dark:border-red-800 object-cover group-hover:scale-105 transition-transform duration-300"
+                onError={handleImageError}
+                onLoad={handleImageLoad}
+                loading={isLCPCandidate ? "eager" : "lazy"}
+                decoding="async"
+                fetchPriority={isLCPCandidate ? "high" : "auto"}
+                width="328"
+                height="272"
+              />
+              {imageLoading && (
+                <div className="absolute inset-0 bg-gray-300 dark:bg-gray-600 animate-pulse z-10 flex items-center justify-center">
+                  <div className="text-gray-500 dark:text-gray-400 text-sm">Loading...</div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className='flex items-center justify-center h-full bg-linear-to-br from-red-50 to-red-100 dark:from-gray-700 dark:to-gray-600'>
+              <div className='text-center p-4'>
+                <svg className="w-12 h-12 text-red-300 dark:text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className='text-red-400 dark:text-gray-300 text-sm'>
+                  {imageError ? 'Failed to load image' : 'No Image Available'}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </Link>
+      
+      {/* Category and Social Share Row */}
+      <div className='px-5 pt-5 flex justify-between items-center'>
+        <span className='inline-block bg-red-900 dark:bg-red-800 text-white text-xs px-3 py-1 rounded-full font-medium'>
+          {category}
+        </span>
+        
+        {/* Minimal Social Share Button */}
+        <div className="relative">
+          <button 
+            className="p-2 bg-gray-100 dark:bg-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            onClick={() => setShowSocialMenu(!showSocialMenu)}
+            aria-label="Share options"
+            aria-expanded={showSocialMenu}
+            aria-haspopup="true"
+          >
+            <svg className="w-4 h-4 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+            </svg>
+          </button>
+          
+          {/* Minimal Share Dropdown */}
+          {showSocialMenu && (
+            <div className="absolute right-0 top-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3 z-10">
+              <SocialShareButtons title={title} slug={slug} excerpt={cleanExcerpt} />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className='p-5'>
+        <Link href={`/posts/${slug}`}>
+          <h3 
+            className={`mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-2 min-h-[56px] leading-tight group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-200 ${
+              isRTL ? 'text-right' : 'text-left'
+            }`}
+            dir={isRTL ? 'rtl' : 'ltr'}
+          >
+            {title}
+          </h3>
+        </Link>
+        
+        <p 
+          className={`mb-4 text-sm text-gray-600 dark:text-gray-300 line-clamp-3 min-h-[60px] leading-relaxed ${
+            excerptIsRTL ? 'text-right' : 'text-left'
+          }`}
+          dir={excerptIsRTL ? 'rtl' : 'ltr'}
+        >
+          {cleanExcerpt}
+        </p>
+        
+        <div className='flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-700'>
+          <span className='text-xs text-gray-500 dark:text-gray-400 font-medium'>
+            {formattedDate}
+          </span>
+          <Link 
+            href={`/posts/${slug}`}
+            className='inline-flex items-center font-medium text-red-900 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors text-sm group/link'
+            aria-label={`Read more about ${title}`}
+          >
+            Read More
+            <svg className='ml-2 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform' fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default BlogItem 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\BlogList.jsx 
+-------------------------------------------------- 
+'use client'
+import React, { useState, useEffect } from 'react'
+import BlogItem from './BlogItem'
+import { BlogItemSkeleton } from '@/components/shared/SkeletonLoader'
+import { getPosts, getAllCategories } from '@/lib/wordpress'
+
+/**
+ * Blog List Component - Displays filtered blog posts with categories
+ * Features:
+ * - Category filtering with nested dropdowns
+ * - Loading states and error handling
+ * - Related posts exclusion
+ * - Responsive grid layout
+ */
+
+const BlogList = ({ 
+  showTitle = true,
+  currentPostSlug = null // Exclude current post from related posts
+}) => {
+  const [posts, setPosts] = useState([])
+  const [filteredPosts, setFilteredPosts] = useState([])
+  const [categories, setCategories] = useState({ 
+    categoryTree: [], 
+    allCategories: [] 
+  })
+  const [activeCategory, setActiveCategory] = useState('all')
+  const [openDropdowns, setOpenDropdowns] = useState(new Set())
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchInitialData()
+  }, [])
+
+  useEffect(() => {
+    // Filter posts when activeCategory changes
+    let filtered = posts;
+    
+    if (activeCategory === 'all') {
+      filtered = posts;
+    } else {
+      filtered = posts.filter(post => 
+        post.categories?.nodes?.some(cat => cat.slug === activeCategory)
+      )
+    }
+    
+    // Exclude current post if provided
+    if (currentPostSlug) {
+      filtered = filtered.filter(post => post.slug !== currentPostSlug)
+    }
+    
+    setFilteredPosts(filtered)
+  }, [activeCategory, posts, currentPostSlug])
+
+  const fetchInitialData = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      
+      const [postsData, categoriesData] = await Promise.all([
+        getPosts(),
+        getAllCategories()
+      ])
+      
+      setPosts(postsData)
+      
+      // Initial filtering
+      let initialFiltered = postsData;
+      if (currentPostSlug) {
+        initialFiltered = postsData.filter(post => post.slug !== currentPostSlug)
+      }
+      setFilteredPosts(initialFiltered)
+      
+      if (categoriesData && categoriesData.categoryTree.length > 0) {
+        // Add "All Posts" category ONLY here
+        const allPostsCategory = {
+          slug: 'all',
+          name: 'All Posts',
+          children: []
+        }
+        
+        const finalCategoryTree = [allPostsCategory, ...categoriesData.categoryTree];
+        console.log('🎯 Final Category Tree for UI:', finalCategoryTree);
+        
+        setCategories({
+          categoryTree: finalCategoryTree,
+          allCategories: categoriesData.allCategories
+        })
+      } else {
+        // Fallback categories
+        const fallbackTree = [
+          { slug: 'all', name: 'All Posts', children: [] },
+          { slug: 'islamic-calendar', name: 'Islamic Calendar', children: [] },
+          { slug: 'events', name: 'Events', children: [] }
+        ]
+        
+        setCategories({
+          categoryTree: fallbackTree,
+          allCategories: fallbackTree
+        })
+      }
+    } catch (err) {
+      console.error('Error:', err)
+      setError('Failed to load content')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCategoryChange = (categorySlug) => {
+    console.log('🎯 Category clicked:', categorySlug);
+    setActiveCategory(categorySlug)
+    setOpenDropdowns(new Set()) // Close all dropdowns when category changes
+  }
+
+  const toggleDropdown = (categorySlug, level = 0) => {
+    const key = `${categorySlug}-${level}`
+    const newOpenDropdowns = new Set(openDropdowns)
+    
+    if (newOpenDropdowns.has(key)) {
+      newOpenDropdowns.delete(key)
+    } else {
+      newOpenDropdowns.add(key)
+    }
+    
+    setOpenDropdowns(newOpenDropdowns)
+  }
+
+  // Recursive function to find category name by slug
+  const findCategoryName = (slug, categoryList = categories.categoryTree) => {
+    for (const category of categoryList) {
+      if (category.slug === slug) return category.name
+      if (category.children && category.children.length > 0) {
+        const found = findCategoryName(slug, category.children)
+        if (found) return found
+      }
+    }
+    return 'Selected Category'
+  }
+
+  // Recursive component to render nested categories with CLICK-based dropdowns
+  const CategoryDropdown = ({ category, level = 0 }) => {
+    const hasChildren = category.children && category.children.length > 0
+    const isActive = activeCategory === category.slug
+    const dropdownKey = `${category.slug}-${level}`
+    const isOpen = openDropdowns.has(dropdownKey)
+
+    const handleCategoryClick = () => {
+      if (hasChildren) {
+        // Toggle dropdown for categories with children
+        toggleDropdown(category.slug, level)
+      } else {
+        // Select category for categories without children
+        handleCategoryChange(category.slug)
+      }
+    }
+
+    const handleSubCategoryClick = (subCategorySlug) => {
+      handleCategoryChange(subCategorySlug)
+      setOpenDropdowns(new Set()) // Close all dropdowns
+    }
+
+    return (
+      <div 
+        key={dropdownKey}
+        className={`category-dropdown ${level > 0 ? 'nested' : ''}`}
+      >
+        <button
+          className={`category-button ${isActive ? 'active' : ''} ${hasChildren ? 'has-children' : ''} level-${level}`}
+          onClick={handleCategoryClick}
+          type="button"
+        >
+          <span className="category-name">{category.name}</span>
+          
+          {/* Dropdown arrow for categories with children */}
+          {hasChildren && (
+            <svg 
+              className={`dropdown-arrow w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          )}
+        </button>
+
+        {/* Children Categories Dropdown - CLICK based */}
+        {hasChildren && isOpen && (
+          <div 
+            className={`subcategories-menu level-${level + 1}`}
+          >
+            {category.children.map((childCategory) => (
+              <button
+                key={`${childCategory.slug}-${level + 1}`}
+                className={`subcategory-item ${activeCategory === childCategory.slug ? 'active' : ''}`}
+                onClick={() => handleSubCategoryClick(childCategory.slug)}
+                type="button"
+              >
+                {childCategory.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4">
+        <div className="text-center py-16 error-state">
+          <svg className="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 className="text-xl font-semibold text-red-800 dark:text-red-200 mb-2">Connection Error</h3>
+          <p className="text-red-700 dark:text-red-300 mb-4">{error}</p>
+          <button 
+            onClick={fetchInitialData}
+            className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="container mx-auto px-4">
+      {/* Show title only if prop is true */}
+      {showTitle && (
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+            Latest Posts
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mt-2">
+            Discover more Islamic content and events
+          </p>
+        </div>
+      )}
+
+      {/* Category Filters with CLICK-based Dropdowns */}
+      <div className='flex justify-center gap-3 my-10 flex-wrap'>
+        {categories.categoryTree.length > 0 ? (
+          categories.categoryTree.map((category) => (
+            <CategoryDropdown 
+              key={`category-${category.slug}`} 
+              category={category} 
+            />
+          ))
+        ) : (
+          !loading && (
+            <div className="text-center text-gray-500 dark:text-gray-400">
+              No categories available
+            </div>
+          )
+        )}
+      </div>
+
+      {/* Active Category Info */}
+      {activeCategory !== 'all' && (
+        <div className="text-center mb-8">
+          <div className="active-filter-badge">
+            <span>
+              Showing posts from: <strong>{findCategoryName(activeCategory)}</strong>
+            </span>
+            <button
+              onClick={() => handleCategoryChange('all')}
+              className="clear-filter-button"
+              type="button"
+            >
+              ✕ Clear filter
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Posts Grid */}
+      {loading ? (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16'>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <BlogItemSkeleton key={item} />
+          ))}
+        </div>
+      ) : filteredPosts.length > 0 ? (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16'>
+          {filteredPosts.map((post, index) => (
+            <BlogItem
+              key={post.id}
+              title={post.title}
+              excerpt={post.excerpt}
+              categories={post.categories?.nodes}
+              featuredImage={post.featuredImage?.node}
+              date={post.date}
+              slug={post.slug}
+              index={index}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16 warning-state">
+          <svg className="w-16 h-16 text-yellow-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <h3 className="text-xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">No Posts Found</h3>
+          <p className="text-yellow-700 dark:text-yellow-300">
+            {activeCategory === 'all' 
+              ? 'No other content available yet. Please check back later.'
+              : `No posts found in "${findCategoryName(activeCategory)}" category.`
+            }
+          </p>
+          {activeCategory !== 'all' && (
+            <button
+              onClick={() => handleCategoryChange('all')}
+              className="mt-4 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors"
+              type="button"
+            >
+              Show All Posts
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default BlogList 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\BlogList.jsx 
+-------------------------------------------------- 
+'use client'
+import React, { useState, useEffect } from 'react'
+import BlogItem from './BlogItem'
+import { BlogItemSkeleton } from '@/components/shared/SkeletonLoader'
+import { getPosts, getAllCategories } from '@/lib/wordpress'
+
+/**
+ * Blog List Component - Displays filtered blog posts with categories
+ * Features:
+ * - Category filtering with nested dropdowns
+ * - Loading states and error handling
+ * - Related posts exclusion
+ * - Responsive grid layout
+ */
+
+const BlogList = ({ 
+  showTitle = true,
+  currentPostSlug = null // Exclude current post from related posts
+}) => {
+  const [posts, setPosts] = useState([])
+  const [filteredPosts, setFilteredPosts] = useState([])
+  const [categories, setCategories] = useState({ 
+    categoryTree: [], 
+    allCategories: [] 
+  })
+  const [activeCategory, setActiveCategory] = useState('all')
+  const [openDropdowns, setOpenDropdowns] = useState(new Set())
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchInitialData()
+  }, [])
+
+  useEffect(() => {
+    // Filter posts when activeCategory changes
+    let filtered = posts;
+    
+    if (activeCategory === 'all') {
+      filtered = posts;
+    } else {
+      filtered = posts.filter(post => 
+        post.categories?.nodes?.some(cat => cat.slug === activeCategory)
+      )
+    }
+    
+    // Exclude current post if provided
+    if (currentPostSlug) {
+      filtered = filtered.filter(post => post.slug !== currentPostSlug)
+    }
+    
+    setFilteredPosts(filtered)
+  }, [activeCategory, posts, currentPostSlug])
+
+  const fetchInitialData = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      
+      const [postsData, categoriesData] = await Promise.all([
+        getPosts(),
+        getAllCategories()
+      ])
+      
+      setPosts(postsData)
+      
+      // Initial filtering
+      let initialFiltered = postsData;
+      if (currentPostSlug) {
+        initialFiltered = postsData.filter(post => post.slug !== currentPostSlug)
+      }
+      setFilteredPosts(initialFiltered)
+      
+      if (categoriesData && categoriesData.categoryTree.length > 0) {
+        // Add "All Posts" category ONLY here
+        const allPostsCategory = {
+          slug: 'all',
+          name: 'All Posts',
+          children: []
+        }
+        
+        const finalCategoryTree = [allPostsCategory, ...categoriesData.categoryTree];
+        console.log('🎯 Final Category Tree for UI:', finalCategoryTree);
+        
+        setCategories({
+          categoryTree: finalCategoryTree,
+          allCategories: categoriesData.allCategories
+        })
+      } else {
+        // Fallback categories
+        const fallbackTree = [
+          { slug: 'all', name: 'All Posts', children: [] },
+          { slug: 'islamic-calendar', name: 'Islamic Calendar', children: [] },
+          { slug: 'events', name: 'Events', children: [] }
+        ]
+        
+        setCategories({
+          categoryTree: fallbackTree,
+          allCategories: fallbackTree
+        })
+      }
+    } catch (err) {
+      console.error('Error:', err)
+      setError('Failed to load content')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCategoryChange = (categorySlug) => {
+    console.log('🎯 Category clicked:', categorySlug);
+    setActiveCategory(categorySlug)
+    setOpenDropdowns(new Set()) // Close all dropdowns when category changes
+  }
+
+  const toggleDropdown = (categorySlug, level = 0) => {
+    const key = `${categorySlug}-${level}`
+    const newOpenDropdowns = new Set(openDropdowns)
+    
+    if (newOpenDropdowns.has(key)) {
+      newOpenDropdowns.delete(key)
+    } else {
+      newOpenDropdowns.add(key)
+    }
+    
+    setOpenDropdowns(newOpenDropdowns)
+  }
+
+  // Recursive function to find category name by slug
+  const findCategoryName = (slug, categoryList = categories.categoryTree) => {
+    for (const category of categoryList) {
+      if (category.slug === slug) return category.name
+      if (category.children && category.children.length > 0) {
+        const found = findCategoryName(slug, category.children)
+        if (found) return found
+      }
+    }
+    return 'Selected Category'
+  }
+
+  // Recursive component to render nested categories with CLICK-based dropdowns
+  const CategoryDropdown = ({ category, level = 0 }) => {
+    const hasChildren = category.children && category.children.length > 0
+    const isActive = activeCategory === category.slug
+    const dropdownKey = `${category.slug}-${level}`
+    const isOpen = openDropdowns.has(dropdownKey)
+
+    const handleCategoryClick = () => {
+      if (hasChildren) {
+        // Toggle dropdown for categories with children
+        toggleDropdown(category.slug, level)
+      } else {
+        // Select category for categories without children
+        handleCategoryChange(category.slug)
+      }
+    }
+
+    const handleSubCategoryClick = (subCategorySlug) => {
+      handleCategoryChange(subCategorySlug)
+      setOpenDropdowns(new Set()) // Close all dropdowns
+    }
+
+    return (
+      <div 
+        key={dropdownKey}
+        className={`category-dropdown ${level > 0 ? 'nested' : ''}`}
+      >
+        <button
+          className={`category-button ${isActive ? 'active' : ''} ${hasChildren ? 'has-children' : ''} level-${level}`}
+          onClick={handleCategoryClick}
+          type="button"
+        >
+          <span className="category-name">{category.name}</span>
+          
+          {/* Dropdown arrow for categories with children */}
+          {hasChildren && (
+            <svg 
+              className={`dropdown-arrow w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          )}
+        </button>
+
+        {/* Children Categories Dropdown - CLICK based */}
+        {hasChildren && isOpen && (
+          <div 
+            className={`subcategories-menu level-${level + 1}`}
+          >
+            {category.children.map((childCategory) => (
+              <button
+                key={`${childCategory.slug}-${level + 1}`}
+                className={`subcategory-item ${activeCategory === childCategory.slug ? 'active' : ''}`}
+                onClick={() => handleSubCategoryClick(childCategory.slug)}
+                type="button"
+              >
+                {childCategory.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4">
+        <div className="text-center py-16 error-state">
+          <svg className="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 className="text-xl font-semibold text-red-800 dark:text-red-200 mb-2">Connection Error</h3>
+          <p className="text-red-700 dark:text-red-300 mb-4">{error}</p>
+          <button 
+            onClick={fetchInitialData}
+            className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="container mx-auto px-4">
+      {/* Show title only if prop is true */}
+      {showTitle && (
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+            Latest Posts
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mt-2">
+            Discover more Islamic content and events
+          </p>
+        </div>
+      )}
+
+      {/* Category Filters with CLICK-based Dropdowns */}
+      <div className='flex justify-center gap-3 my-10 flex-wrap'>
+        {categories.categoryTree.length > 0 ? (
+          categories.categoryTree.map((category) => (
+            <CategoryDropdown 
+              key={`category-${category.slug}`} 
+              category={category} 
+            />
+          ))
+        ) : (
+          !loading && (
+            <div className="text-center text-gray-500 dark:text-gray-400">
+              No categories available
+            </div>
+          )
+        )}
+      </div>
+
+      {/* Active Category Info */}
+      {activeCategory !== 'all' && (
+        <div className="text-center mb-8">
+          <div className="active-filter-badge">
+            <span>
+              Showing posts from: <strong>{findCategoryName(activeCategory)}</strong>
+            </span>
+            <button
+              onClick={() => handleCategoryChange('all')}
+              className="clear-filter-button"
+              type="button"
+            >
+              ✕ Clear filter
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Posts Grid */}
+      {loading ? (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16'>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <BlogItemSkeleton key={item} />
+          ))}
+        </div>
+      ) : filteredPosts.length > 0 ? (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16'>
+          {filteredPosts.map((post, index) => (
+            <BlogItem
+              key={post.id}
+              title={post.title}
+              excerpt={post.excerpt}
+              categories={post.categories?.nodes}
+              featuredImage={post.featuredImage?.node}
+              date={post.date}
+              slug={post.slug}
+              index={index}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16 warning-state">
+          <svg className="w-16 h-16 text-yellow-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <h3 className="text-xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">No Posts Found</h3>
+          <p className="text-yellow-700 dark:text-yellow-300">
+            {activeCategory === 'all' 
+              ? 'No other content available yet. Please check back later.'
+              : `No posts found in "${findCategoryName(activeCategory)}" category.`
+            }
+          </p>
+          {activeCategory !== 'all' && (
+            <button
+              onClick={() => handleCategoryChange('all')}
+              className="mt-4 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors"
+              type="button"
+            >
+              Show All Posts
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default BlogList 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\CategoryFilter.jsx 
+-------------------------------------------------- 
+'use client'
+import React, { useState } from 'react'
+
+/**
+ * Category Filter Component - Standalone category filtering with dropdowns
+ * Features:
+ * - Nested category support
+ * - Click-based dropdowns
+ * - Active state tracking
+ * - Dark mode support
+ */
+
+const CategoryFilter = ({ 
+  categories = [], 
+  activeCategory = 'all',
+  onCategoryChange = () => {} 
+}) => {
+  const [openDropdowns, setOpenDropdowns] = useState(new Set())
+
+  const toggleDropdown = (categorySlug, level = 0) => {
+    const key = `${categorySlug}-${level}`
+    const newOpenDropdowns = new Set(openDropdowns)
+    
+    if (newOpenDropdowns.has(key)) {
+      newOpenDropdowns.delete(key)
+    } else {
+      newOpenDropdowns.add(key)
+    }
+    
+    setOpenDropdowns(newOpenDropdowns)
+  }
+
+  // Recursive component to render nested categories with CLICK-based dropdowns
+  const CategoryDropdown = ({ category, level = 0 }) => {
+    const hasChildren = category.children && category.children.length > 0
+    const isActive = activeCategory === category.slug
+    const dropdownKey = `${category.slug}-${level}`
+    const isOpen = openDropdowns.has(dropdownKey)
+
+    const handleCategoryClick = () => {
+      if (hasChildren) {
+        // Toggle dropdown for categories with children
+        toggleDropdown(category.slug, level)
+      } else {
+        // Select category for categories without children
+        onCategoryChange(category.slug)
+      }
+    }
+
+    const handleSubCategoryClick = (subCategorySlug) => {
+      onCategoryChange(subCategorySlug)
+      setOpenDropdowns(new Set()) // Close all dropdowns
+    }
+
+    return (
+      <div 
+        key={dropdownKey}
+        className={`category-dropdown ${level > 0 ? 'nested' : ''}`}
+      >
+        <button
+          className={`category-button ${isActive ? 'active' : ''} ${hasChildren ? 'has-children' : ''} level-${level}`}
+          onClick={handleCategoryClick}
+          type="button"
+          aria-expanded={isOpen}
+          aria-haspopup={hasChildren}
+        >
+          <span className="category-name">{category.name}</span>
+          
+          {/* Dropdown arrow for categories with children */}
+          {hasChildren && (
+            <svg 
+              className={`dropdown-arrow w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          )}
+        </button>
+
+        {/* Children Categories Dropdown - CLICK based */}
+        {hasChildren && isOpen && (
+          <div 
+            className={`subcategories-menu level-${level + 1}`}
+            role="menu"
+            aria-orientation="vertical"
+          >
+            {category.children.map((childCategory) => (
+              <button
+                key={`${childCategory.slug}-${level + 1}`}
+                className={`subcategory-item ${activeCategory === childCategory.slug ? 'active' : ''}`}
+                onClick={() => handleSubCategoryClick(childCategory.slug)}
+                type="button"
+                role="menuitem"
+              >
+                {childCategory.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  // Recursive function to find category name by slug
+  const findCategoryName = (slug, categoryList = categories) => {
+    for (const category of categoryList) {
+      if (category.slug === slug) return category.name
+      if (category.children && category.children.length > 0) {
+        const found = findCategoryName(slug, category.children)
+        if (found) return found
+      }
+    }
+    return 'Selected Category'
+  }
+
+  if (!categories || categories.length === 0) {
+    return (
+      <div className="text-center text-gray-500 dark:text-gray-400 py-4">
+        No categories available
+      </div>
+    )
+  }
+
+  return (
+    <div className="category-filter-container">
+      {/* Category Filters with CLICK-based Dropdowns */}
+      <div className='flex justify-center gap-3 my-6 flex-wrap'>
+        {categories.map((category) => (
+          <CategoryDropdown 
+            key={`category-${category.slug}`} 
+            category={category} 
+          />
+        ))}
+      </div>
+
+      {/* Active Category Info */}
+      {activeCategory !== 'all' && (
+        <div className="text-center mb-6">
+          <div className="active-filter-badge inline-flex items-center">
+            <span className="text-sm">
+              Showing posts from: <strong className="font-semibold">{findCategoryName(activeCategory)}</strong>
+            </span>
+            <button
+              onClick={() => onCategoryChange('all')}
+              className="clear-filter-button ml-3"
+              type="button"
+              aria-label="Clear category filter"
+            >
+              ✕ Clear filter
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default CategoryFilter 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\CategoryFilter.jsx 
+-------------------------------------------------- 
+'use client'
+import React, { useState } from 'react'
+
+/**
+ * Category Filter Component - Standalone category filtering with dropdowns
+ * Features:
+ * - Nested category support
+ * - Click-based dropdowns
+ * - Active state tracking
+ * - Dark mode support
+ */
+
+const CategoryFilter = ({ 
+  categories = [], 
+  activeCategory = 'all',
+  onCategoryChange = () => {} 
+}) => {
+  const [openDropdowns, setOpenDropdowns] = useState(new Set())
+
+  const toggleDropdown = (categorySlug, level = 0) => {
+    const key = `${categorySlug}-${level}`
+    const newOpenDropdowns = new Set(openDropdowns)
+    
+    if (newOpenDropdowns.has(key)) {
+      newOpenDropdowns.delete(key)
+    } else {
+      newOpenDropdowns.add(key)
+    }
+    
+    setOpenDropdowns(newOpenDropdowns)
+  }
+
+  // Recursive component to render nested categories with CLICK-based dropdowns
+  const CategoryDropdown = ({ category, level = 0 }) => {
+    const hasChildren = category.children && category.children.length > 0
+    const isActive = activeCategory === category.slug
+    const dropdownKey = `${category.slug}-${level}`
+    const isOpen = openDropdowns.has(dropdownKey)
+
+    const handleCategoryClick = () => {
+      if (hasChildren) {
+        // Toggle dropdown for categories with children
+        toggleDropdown(category.slug, level)
+      } else {
+        // Select category for categories without children
+        onCategoryChange(category.slug)
+      }
+    }
+
+    const handleSubCategoryClick = (subCategorySlug) => {
+      onCategoryChange(subCategorySlug)
+      setOpenDropdowns(new Set()) // Close all dropdowns
+    }
+
+    return (
+      <div 
+        key={dropdownKey}
+        className={`category-dropdown ${level > 0 ? 'nested' : ''}`}
+      >
+        <button
+          className={`category-button ${isActive ? 'active' : ''} ${hasChildren ? 'has-children' : ''} level-${level}`}
+          onClick={handleCategoryClick}
+          type="button"
+          aria-expanded={isOpen}
+          aria-haspopup={hasChildren}
+        >
+          <span className="category-name">{category.name}</span>
+          
+          {/* Dropdown arrow for categories with children */}
+          {hasChildren && (
+            <svg 
+              className={`dropdown-arrow w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          )}
+        </button>
+
+        {/* Children Categories Dropdown - CLICK based */}
+        {hasChildren && isOpen && (
+          <div 
+            className={`subcategories-menu level-${level + 1}`}
+            role="menu"
+            aria-orientation="vertical"
+          >
+            {category.children.map((childCategory) => (
+              <button
+                key={`${childCategory.slug}-${level + 1}`}
+                className={`subcategory-item ${activeCategory === childCategory.slug ? 'active' : ''}`}
+                onClick={() => handleSubCategoryClick(childCategory.slug)}
+                type="button"
+                role="menuitem"
+              >
+                {childCategory.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  // Recursive function to find category name by slug
+  const findCategoryName = (slug, categoryList = categories) => {
+    for (const category of categoryList) {
+      if (category.slug === slug) return category.name
+      if (category.children && category.children.length > 0) {
+        const found = findCategoryName(slug, category.children)
+        if (found) return found
+      }
+    }
+    return 'Selected Category'
+  }
+
+  if (!categories || categories.length === 0) {
+    return (
+      <div className="text-center text-gray-500 dark:text-gray-400 py-4">
+        No categories available
+      </div>
+    )
+  }
+
+  return (
+    <div className="category-filter-container">
+      {/* Category Filters with CLICK-based Dropdowns */}
+      <div className='flex justify-center gap-3 my-6 flex-wrap'>
+        {categories.map((category) => (
+          <CategoryDropdown 
+            key={`category-${category.slug}`} 
+            category={category} 
+          />
+        ))}
+      </div>
+
+      {/* Active Category Info */}
+      {activeCategory !== 'all' && (
+        <div className="text-center mb-6">
+          <div className="active-filter-badge inline-flex items-center">
+            <span className="text-sm">
+              Showing posts from: <strong className="font-semibold">{findCategoryName(activeCategory)}</strong>
+            </span>
+            <button
+              onClick={() => onCategoryChange('all')}
+              className="clear-filter-button ml-3"
+              type="button"
+              aria-label="Clear category filter"
+            >
+              ✕ Clear filter
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default CategoryFilter 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\PostClient.jsx 
+-------------------------------------------------- 
+ 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\blog\PostClient.jsx 
+-------------------------------------------------- 
+ 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\layout\Header.jsx 
+-------------------------------------------------- 
+"use client"
+
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { ModeToggle } from "@/components/theme/mode-toggle";
+
+/**
+ * Main Header Component with Logo and Theme Toggle
+ * Features: 
+ * - Responsive design
+ * - Dark/Light mode support  
+ * - Loading states
+ * - SEO optimized
+ */
+const Header = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <div className="py-5 px-5 md:px-12 lg:px-28 bg-gradient-to-b from-white to-red-50 dark:from-gray-900 dark:to-red-950">
+      {/* Logo Section */}
+      <div className="flex justify-between items-center">
+        <div className="relative w-[130px] sm:w-[160px] h-[60px]">
+          {mounted ? (
+            <Link href="/" aria-label="Al-Asr Home">
+              <Image
+                src="/logo.png"
+                alt="Al-Asr (Islamic Service)"
+                width={80}
+                height={40}
+                className="object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                priority
+                sizes="(max-width: 640px) 130px, 160px"
+              />
+            </Link>
+          ) : (
+            <div className="w-full h-full bg-gray-200 rounded animate-pulse"></div>
+          )}
+        </div>
+        
+        {/* Theme Toggle Button */}
+        {mounted && <ModeToggle />}
+      </div>
+
+      {/* Hero Section */}
+      <div className="text-center my-12">
+        <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+          Al-Asr ( Islamic Service )
+        </h1>
+        <p className="mt-6 max-w-[740px] mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed text-balance">
+          Islamic services, calendar events, and community programs. Stay updated with the latest from Al-Asr ( Islamic Service ).
+        </p>
+        <div className="flex justify-center mt-8">
+          <div className="bg-red-900 text-white px-6 py-3 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-200">
+            <p className="font-semibold text-sm sm:text-base">📅 Islamic Calendar • 🕌 Services • 👥 Community</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header; 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\layout\Header.jsx 
+-------------------------------------------------- 
+"use client"
+
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { ModeToggle } from "@/components/theme/mode-toggle";
+
+/**
+ * Main Header Component with Logo and Theme Toggle
+ * Features: 
+ * - Responsive design
+ * - Dark/Light mode support  
+ * - Loading states
+ * - SEO optimized
+ */
+const Header = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <div className="py-5 px-5 md:px-12 lg:px-28 bg-gradient-to-b from-white to-red-50 dark:from-gray-900 dark:to-red-950">
+      {/* Logo Section */}
+      <div className="flex justify-between items-center">
+        <div className="relative w-[130px] sm:w-[160px] h-[60px]">
+          {mounted ? (
+            <Link href="/" aria-label="Al-Asr Home">
+              <Image
+                src="/logo.png"
+                alt="Al-Asr (Islamic Service)"
+                width={80}
+                height={40}
+                className="object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                priority
+                sizes="(max-width: 640px) 130px, 160px"
+              />
+            </Link>
+          ) : (
+            <div className="w-full h-full bg-gray-200 rounded animate-pulse"></div>
+          )}
+        </div>
+        
+        {/* Theme Toggle Button */}
+        {mounted && <ModeToggle />}
+      </div>
+
+      {/* Hero Section */}
+      <div className="text-center my-12">
+        <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+          Al-Asr ( Islamic Service )
+        </h1>
+        <p className="mt-6 max-w-[740px] mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed text-balance">
+          Islamic services, calendar events, and community programs. Stay updated with the latest from Al-Asr ( Islamic Service ).
+        </p>
+        <div className="flex justify-center mt-8">
+          <div className="bg-red-900 text-white px-6 py-3 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-200">
+            <p className="font-semibold text-sm sm:text-base">📅 Islamic Calendar • 🕌 Services • 👥 Community</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header; 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\shared\SkeletonLoader.jsx 
+-------------------------------------------------- 
+import React from 'react'
+
+/**
+ * Skeleton Loader Components - Loading states for better UX
+ * Features:
+ * - Home page skeleton
+ * - Post page skeleton  
+ * - Blog item skeleton
+ * - Dark mode support
+ */
+
+export const HomePageSkeleton = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header Skeleton */}
+      <div className="py-5 px-5 md:px-12 lg:px-28 bg-linear-to-b from-white to-red-50 dark:from-gray-800 dark:to-gray-700">
+        <div className="flex justify-between items-center">
+          <div className="w-[130px] sm:w-[160px] h-[60px] bg-gray-300 dark:bg-gray-600 rounded animate-pulse"></div>
+          <div className="w-0"></div>
+        </div>
+        
+        <div className="text-center my-12">
+          <div className="h-12 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mb-4 mx-auto max-w-md"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-6 mx-auto max-w-2xl"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-4 mx-auto max-w-xl w-3/4"></div>
+          <div className="h-12 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-8 mx-auto max-w-sm"></div>
+        </div>
+      </div>
+
+      {/* Blog List Skeleton */}
+      <div className="container mx-auto px-4">
+        {/* Category Filters Skeleton */}
+        <div className='flex justify-center gap-3 my-10 flex-wrap'>
+          {[1, 2, 3, 4, 5].map((item) => (
+            <div key={item} className="py-2 px-5 bg-gray-300 dark:bg-gray-600 rounded-sm animate-pulse w-20 h-9"></div>
+          ))}
+        </div>
+
+        {/* Posts Grid Skeleton */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16'>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <div key={item} className='max-w-[330px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 mx-auto animate-pulse'>
+              {/* Image Skeleton */}
+              <div className='h-48 w-full bg-gray-300 dark:bg-gray-700'></div>
+              
+              {/* Category Skeleton */}
+              <div className='px-5 pt-5'>
+                <div className="w-20 h-6 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+
+              {/* Content Skeleton */}
+              <div className='p-5'>
+                <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+                
+                <div className='flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-600'>
+                  <div className="w-16 h-3 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                  <div className="w-20 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const PostPageSkeleton = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden animate-pulse">
+        {/* Featured Image Skeleton */}
+        <div className="h-96 w-full bg-gray-300 dark:bg-gray-700"></div>
+
+        {/* Content Skeleton */}
+        <div className="p-8">
+          {/* Categories Skeleton */}
+          <div className="mb-4">
+            <div className="w-24 h-6 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+          </div>
+
+          {/* Title Skeleton */}
+          <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+          <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded mb-6 w-1/2"></div>
+
+          {/* Meta Info Skeleton */}
+          <div className="flex items-center gap-4 mb-6 border-b border-gray-200 dark:border-gray-600 pb-4">
+            <div className="w-32 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            <div className="w-24 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+          </div>
+
+          {/* Content Skeleton */}
+          <div className="space-y-4">
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+          </div>
+
+          {/* Back Button Skeleton */}
+          <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+            <div className="w-32 h-6 bg-gray-300 dark:bg-gray-600 rounded float-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const BlogItemSkeleton = () => {
+  return (
+    <div className='max-w-[330px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 mx-auto animate-pulse'>
+      {/* Image Skeleton */}
+      <div className='h-48 w-full bg-gray-300 dark:bg-gray-700'></div>
+      
+      {/* Category Skeleton */}
+      <div className='px-5 pt-5'>
+        <div className="w-20 h-6 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+      </div>
+
+      {/* Content Skeleton */}
+      <div className='p-5'>
+        <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+        
+        <div className='flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-600'>
+          <div className="w-16 h-3 bg-gray-300 dark:bg-gray-600 rounded"></div>
+          <div className="w-20 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Export default for convenience
+export default {
+  HomePageSkeleton,
+  PostPageSkeleton, 
+  BlogItemSkeleton
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\shared\SkeletonLoader.jsx 
+-------------------------------------------------- 
+import React from 'react'
+
+/**
+ * Skeleton Loader Components - Loading states for better UX
+ * Features:
+ * - Home page skeleton
+ * - Post page skeleton  
+ * - Blog item skeleton
+ * - Dark mode support
+ */
+
+export const HomePageSkeleton = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header Skeleton */}
+      <div className="py-5 px-5 md:px-12 lg:px-28 bg-linear-to-b from-white to-red-50 dark:from-gray-800 dark:to-gray-700">
+        <div className="flex justify-between items-center">
+          <div className="w-[130px] sm:w-[160px] h-[60px] bg-gray-300 dark:bg-gray-600 rounded animate-pulse"></div>
+          <div className="w-0"></div>
+        </div>
+        
+        <div className="text-center my-12">
+          <div className="h-12 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mb-4 mx-auto max-w-md"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-6 mx-auto max-w-2xl"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-4 mx-auto max-w-xl w-3/4"></div>
+          <div className="h-12 bg-gray-300 dark:bg-gray-600 rounded animate-pulse mt-8 mx-auto max-w-sm"></div>
+        </div>
+      </div>
+
+      {/* Blog List Skeleton */}
+      <div className="container mx-auto px-4">
+        {/* Category Filters Skeleton */}
+        <div className='flex justify-center gap-3 my-10 flex-wrap'>
+          {[1, 2, 3, 4, 5].map((item) => (
+            <div key={item} className="py-2 px-5 bg-gray-300 dark:bg-gray-600 rounded-sm animate-pulse w-20 h-9"></div>
+          ))}
+        </div>
+
+        {/* Posts Grid Skeleton */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16'>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <div key={item} className='max-w-[330px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 mx-auto animate-pulse'>
+              {/* Image Skeleton */}
+              <div className='h-48 w-full bg-gray-300 dark:bg-gray-700'></div>
+              
+              {/* Category Skeleton */}
+              <div className='px-5 pt-5'>
+                <div className="w-20 h-6 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+
+              {/* Content Skeleton */}
+              <div className='p-5'>
+                <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+                
+                <div className='flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-600'>
+                  <div className="w-16 h-3 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                  <div className="w-20 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const PostPageSkeleton = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden animate-pulse">
+        {/* Featured Image Skeleton */}
+        <div className="h-96 w-full bg-gray-300 dark:bg-gray-700"></div>
+
+        {/* Content Skeleton */}
+        <div className="p-8">
+          {/* Categories Skeleton */}
+          <div className="mb-4">
+            <div className="w-24 h-6 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+          </div>
+
+          {/* Title Skeleton */}
+          <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+          <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded mb-6 w-1/2"></div>
+
+          {/* Meta Info Skeleton */}
+          <div className="flex items-center gap-4 mb-6 border-b border-gray-200 dark:border-gray-600 pb-4">
+            <div className="w-32 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            <div className="w-24 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+          </div>
+
+          {/* Content Skeleton */}
+          <div className="space-y-4">
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+          </div>
+
+          {/* Back Button Skeleton */}
+          <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+            <div className="w-32 h-6 bg-gray-300 dark:bg-gray-600 rounded float-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const BlogItemSkeleton = () => {
+  return (
+    <div className='max-w-[330px] bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 mx-auto animate-pulse'>
+      {/* Image Skeleton */}
+      <div className='h-48 w-full bg-gray-300 dark:bg-gray-700'></div>
+      
+      {/* Category Skeleton */}
+      <div className='px-5 pt-5'>
+        <div className="w-20 h-6 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+      </div>
+
+      {/* Content Skeleton */}
+      <div className='p-5'>
+        <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+        
+        <div className='flex justify-between items-center pt-3 border-t border-gray-200 dark:border-gray-600'>
+          <div className="w-16 h-3 bg-gray-300 dark:bg-gray-600 rounded"></div>
+          <div className="w-20 h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Export default for convenience
+export default {
+  HomePageSkeleton,
+  PostPageSkeleton, 
+  BlogItemSkeleton
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\shared\SocialShareButtons.jsx 
+-------------------------------------------------- 
+'use client'
+import React, { useState } from 'react'
+
+/**
+ * Social Share Buttons Component - Share content on social media
+ * Features:
+ * - WhatsApp sharing
+ * - Facebook sharing  
+ * - Twitter sharing
+ * - Copy link functionality
+ * - Loading states
+ */
+
+const SocialShareButtons = ({ title, slug, excerpt = '' }) => {
+  const [isSharing, setIsSharing] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const shareOnWhatsApp = async () => {
+    if (isSharing) return;
+    
+    setIsSharing(true);
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    const text = `📖 ${title}\n\n${excerpt}\n\n🔗 ${url}`;
+    
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    window.open(whatsappUrl, '_blank');
+    setIsSharing(false);
+  };
+
+  const shareOnFacebook = () => {
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const shareOnTwitter = () => {
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    const text = `${title} - Al Asr Islamic Service`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const copyToClipboard = async () => {
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center gap-3 py-3">
+      {/* WhatsApp Share Button */}
+      <button 
+        onClick={shareOnWhatsApp}
+        disabled={isSharing}
+        className="p-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-200 disabled:opacity-50"
+        title="Share on WhatsApp"
+        aria-label="Share on WhatsApp"
+      >
+        {isSharing ? (
+          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        ) : (
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893-.001-3.189-1.248-6.189-3.515-8.452"/>
+          </svg>
+        )}
+      </button>
+
+      {/* Facebook Share Button */}
+      <button 
+        onClick={shareOnFacebook}
+        className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200"
+        title="Share on Facebook"
+        aria-label="Share on Facebook"
+      >
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </button>
+
+      {/* Twitter Share Button */}
+      <button 
+        onClick={shareOnTwitter}
+        className="p-2 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition-colors duration-200"
+        title="Share on Twitter"
+        aria-label="Share on Twitter"
+      >
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.016 10.016 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+        </svg>
+      </button>
+
+      {/* Copy Link Button */}
+      <button 
+        onClick={copyToClipboard}
+        className="p-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors duration-200"
+        title="Copy link"
+        aria-label="Copy link to clipboard"
+      >
+        {copied ? (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        ) : (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+}
+
+export default SocialShareButtons; 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\shared\SocialShareButtons.jsx 
+-------------------------------------------------- 
+'use client'
+import React, { useState } from 'react'
+
+/**
+ * Social Share Buttons Component - Share content on social media
+ * Features:
+ * - WhatsApp sharing
+ * - Facebook sharing  
+ * - Twitter sharing
+ * - Copy link functionality
+ * - Loading states
+ */
+
+const SocialShareButtons = ({ title, slug, excerpt = '' }) => {
+  const [isSharing, setIsSharing] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const shareOnWhatsApp = async () => {
+    if (isSharing) return;
+    
+    setIsSharing(true);
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    const text = `📖 ${title}\n\n${excerpt}\n\n🔗 ${url}`;
+    
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    window.open(whatsappUrl, '_blank');
+    setIsSharing(false);
+  };
+
+  const shareOnFacebook = () => {
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const shareOnTwitter = () => {
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    const text = `${title} - Al Asr Islamic Service`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const copyToClipboard = async () => {
+    const url = `https://al-asr.centers.pk/posts/${slug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center gap-3 py-3">
+      {/* WhatsApp Share Button */}
+      <button 
+        onClick={shareOnWhatsApp}
+        disabled={isSharing}
+        className="p-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-200 disabled:opacity-50"
+        title="Share on WhatsApp"
+        aria-label="Share on WhatsApp"
+      >
+        {isSharing ? (
+          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        ) : (
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893-.001-3.189-1.248-6.189-3.515-8.452"/>
+          </svg>
+        )}
+      </button>
+
+      {/* Facebook Share Button */}
+      <button 
+        onClick={shareOnFacebook}
+        className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200"
+        title="Share on Facebook"
+        aria-label="Share on Facebook"
+      >
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </button>
+
+      {/* Twitter Share Button */}
+      <button 
+        onClick={shareOnTwitter}
+        className="p-2 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition-colors duration-200"
+        title="Share on Twitter"
+        aria-label="Share on Twitter"
+      >
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.016 10.016 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+        </svg>
+      </button>
+
+      {/* Copy Link Button */}
+      <button 
+        onClick={copyToClipboard}
+        className="p-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors duration-200"
+        title="Copy link"
+        aria-label="Copy link to clipboard"
+      >
+        {copied ? (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        ) : (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+}
+
+export default SocialShareButtons; 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\theme\mode-toggle.js 
+-------------------------------------------------- 
+"use client"
+
+import * as React from "react"
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+/**
+ * Mode Toggle Component - Dark/Light theme switcher
+ * Features:
+ * - Dropdown menu for theme selection
+ * - System theme option
+ * - Smooth icon transitions
+ * - Accessible design
+ */
+
+export function ModeToggle() {
+  const { setTheme } = useTheme()
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" aria-label="Toggle theme">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          <Sun className="w-4 h-4 mr-2" />
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          <Moon className="w-4 h-4 mr-2" />
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\theme\theme-provider.js 
+-------------------------------------------------- 
+"use client"
+
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+/**
+ * Theme Provider Component - Provides dark/light mode theming
+ * Features:
+ * - System theme detection
+ * - Persistent theme storage
+ * - Smooth transitions
+ * - No flash on load
+ */
+
+export function ThemeProvider({ children, ...props }) {
+  return (
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+      {...props}
+    >
+      {children}
+    </NextThemesProvider>
+  )
+} 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\ui\button.js 
+-------------------------------------------------- 
+import * as React from "react"
+import { cva } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+/**
+ * Button Component - Reusable button with variants
+ * Features:
+ * - Multiple variants (default, destructive, outline, secondary, ghost, link)
+ * - Multiple sizes (sm, default, lg, icon)
+ * - Full width option
+ * - Dark mode support
+ */
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
+  {
+    variants: {
+      variant: {
+        default: "bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90",
+        destructive: "bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
+        outline: "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+        secondary: "bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+        ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+        link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+  return (
+    <button
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      {...props}
+    />
+  )
+})
+Button.displayName = "Button"
+
+export { Button, buttonVariants } 
+================================================== 
+FILE: C:\Users\AamirAli\Desktop\al-asr\Components\ui\dropdown-menu.js 
+-------------------------------------------------- 
+"use client"
+
+import * as React from "react"
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+import { Check, ChevronRight, Circle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+/**
+ * Dropdown Menu Component - Accessible dropdown menu using Radix UI
+ * Features:
+ * - Keyboard navigation
+ * - Screen reader support
+ * - Smooth animations
+ * - Portal support
+ */
+
+const DropdownMenu = DropdownMenuPrimitive.Root
+
+const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
+
+const DropdownMenuGroup = DropdownMenuPrimitive.Group
+
+const DropdownMenuPortal = DropdownMenuPrimitive.Portal
+
+const DropdownMenuSub = DropdownMenuPrimitive.Sub
+
+const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
+
+const DropdownMenuSubTrigger = React.forwardRef(({ className, inset, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-slate-100 data-[state=open]:bg-slate-100 dark:focus:bg-slate-800 dark:data-[state=open]:bg-slate-800",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRight className="ml-auto h-4 w-4" />
+  </DropdownMenuPrimitive.SubTrigger>
+))
+DropdownMenuSubTrigger.displayName =
+  DropdownMenuPrimitive.SubTrigger.displayName
+
+const DropdownMenuSubContent = React.forwardRef(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubContent
+    ref={ref}
+    className={cn(
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-slate-200 bg-white p-1 text-slate-950 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+      className
+    )}
+    {...props}
+  />
+))
+DropdownMenuSubContent.displayName =
+  DropdownMenuPrimitive.SubContent.displayName
+
+const DropdownMenuContent = React.forwardRef(({ className, sideOffset = 4, ...props }, ref) => (
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-slate-200 bg-white p-1 text-slate-950 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+        className
+      )}
+      {...props}
+    />
+  </DropdownMenuPrimitive.Portal>
+))
+DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
+
+const DropdownMenuItem = React.forwardRef(({ className, inset, ...props }, ref) => (
+  <DropdownMenuPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+))
+DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
+
+const DropdownMenuCheckboxItem = React.forwardRef(({ className, children, checked, ...props }, ref) => (
+  <DropdownMenuPrimitive.CheckboxItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
+      className
+    )}
+    checked={checked}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <DropdownMenuPrimitive.ItemIndicator>
+        <Check className="h-4 w-4" />
+      </DropdownMenuPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </DropdownMenuPrimitive.CheckboxItem>
+))
+DropdownMenuCheckboxItem.displayName =
+  DropdownMenuPrimitive.CheckboxItem.displayName
+
+const DropdownMenuRadioItem = React.forwardRef(({ className, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.RadioItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
+      className
+    )}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <DropdownMenuPrimitive.ItemIndicator>
+        <Circle className="h-2 w-2 fill-current" />
+      </DropdownMenuPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </DropdownMenuPrimitive.RadioItem>
+))
+DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
+
+const DropdownMenuLabel = React.forwardRef(({ className, inset, ...props }, ref) => (
+  <DropdownMenuPrimitive.Label
+    ref={ref}
+    className={cn(
+      "px-2 py-1.5 text-sm font-semibold",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+))
+DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
+
+const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-slate-100 dark:bg-slate-800", className)}
+    {...props}
+  />
+))
+DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
+
+const DropdownMenuShortcut = ({
+  className,
+  ...props
+}) => {
+  return (
+    <span
+      className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
+      {...props}
+    />
+  )
+}
+DropdownMenuShortcut.displayName = "DropdownMenuShortcut"
+
+export {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuGroup,
+  DropdownMenuPortal,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuRadioGroup,
+} 

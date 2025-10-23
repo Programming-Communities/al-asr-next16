@@ -1,3 +1,4 @@
+/* app/globals.css */
 @import "tailwindcss";
 
 :root {
@@ -5,13 +6,364 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
+/* Critical CSS - Load First */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* LCP Optimization - REMOVE fetchpriority */
+.lcp-image {
+  content-visibility: auto;
+  /* fetchpriority: high; REMOVE THIS LINE */
+}
+
+/* ========== IMAGE FIXES ========== */
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Card images ke liye cover effect */
+.card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Post images ke liye */
+.post-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Banner/Hero images ke liye */
+.banner-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Next.js Image component ke liye container */
+.image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-container-250 {
+  height: 250px;
+}
+
+.image-container-400 {
+  height: 400px;
+}
+
+.image-container-500 {
+  height: 500px;
+}
+
+/* ========== CATEGORIES FIXES ========== */
+/* Categories dropdown main fix */
+.categories-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 2.5rem 0;
+}
+
+.category-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #374151;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.category-filter:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.category-filter.active {
+  background: #991b1b;
+  color: white;
+  border-color: #991b1b;
+}
+
+/* Dropdown styles */
+.category-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.subcategories-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  min-width: 200px;
+  z-index: 50;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+.category-dropdown:hover .subcategories-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.category-dropdown.nested .subcategories-menu {
+  left: 100%;
+  top: 0;
+  margin-top: 0;
+  margin-left: 0.25rem;
+  min-width: 180px;
+}
+
+.subcategory-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  text-decoration: none;
+}
+
+.subcategory-item:hover {
+  background-color: #f3f4f6;
+}
+
+.subcategory-item.active {
+  background-color: #fef2f2;
+  color: #991b1b;
+}
+
+.category-button {
+  position: relative;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.category-button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.category-button.active {
+  background: #991b1b;
+  color: white;
+  border-color: #991b1b;
+}
+
+.category-button.has-children {
+  padding-right: 2.5rem;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+}
+
+.category-dropdown:hover .dropdown-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Active filter display */
+.active-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #dbeafe;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #1e40af;
+  margin: 1rem 0;
+}
+
+.clear-filter-button {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.clear-filter-button:hover {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+/* ========== RTL/LTR TEXT STYLING ========== */
+.urdu-arabic-content {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 2;
+}
+
+.urdu-arabic-content * {
+  direction: rtl;
+  text-align: right;
+}
+
+.english-content {
+  direction: ltr;
+  text-align: left;
+  line-height: 1.7;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: right;
+}
+
+/* WordPress Content Styling */
+.wp-content {
+  word-wrap: break-word;
+  line-height: 1.8;
+}
+
+.wp-content * {
+  max-width: 100%;
+}
+
+.wp-content p {
+  margin-bottom: 1rem;
+}
+
+.wp-content.urdu-arabic-content {
+  line-height: 2.2;
+  font-size: 1.1em;
+  text-align: right;
+}
+
+.wp-content.english-content {
+  line-height: 1.7;
+  font-size: 1em;
+  text-align: left;
+}
+
+.wp-content ul, .wp-content ol {
+  margin-bottom: 1rem;
+}
+
+.wp-content.urdu-arabic-content ul, 
+.wp-content.urdu-arabic-content ol {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+.wp-content.english-content ul, 
+.wp-content.english-content ol {
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+
+.wp-content li {
+  margin-bottom: 0.5rem;
+}
+
+.wp-content h1, .wp-content h2, .wp-content h3, 
+.wp-content h4, .wp-content h5, .wp-content h6 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.wp-content.urdu-arabic-content h1, 
+.wp-content.urdu-arabic-content h2, 
+.wp-content.urdu-arabic-content h3, 
+.wp-content.urdu-arabic-content h4, 
+.wp-content.urdu-arabic-content h5, 
+.wp-content.urdu-arabic-content h6 {
+  text-align: right;
+  line-height: 1.8;
+}
+
+.wp-content.english-content h1, 
+.wp-content.english-content h2, 
+.wp-content.english-content h3, 
+.wp-content.english-content h4, 
+.wp-content.english-content h5, 
+.wp-content.english-content h6 {
+  text-align: left;
+}
+
+.wp-content h1 { font-size: 2rem; }
+.wp-content h2 { font-size: 1.75rem; }
+.wp-content h3 { font-size: 1.5rem; }
+.wp-content h4 { font-size: 1.25rem; }
+.wp-content h5 { font-size: 1.125rem; }
+.wp-content h6 { font-size: 1rem; }
+
+.wp-content.urdu-arabic-content h1 { font-size: 2.2rem; }
+.wp-content.urdu-arabic-content h2 { font-size: 1.9rem; }
+.wp-content.urdu-arabic-content h3 { font-size: 1.6rem; }
+.wp-content.urdu-arabic-content h4 { font-size: 1.4rem; }
+.wp-content.urdu-arabic-content h5 { font-size: 1.2rem; }
+.wp-content.urdu-arabic-content h6 { font-size: 1.1rem; }
+
+/* ========== DARK MODE STYLES ========== */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +371,232 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+.dark body {
+  background: #0a0a0a;
+  color: #ededed;
+}
+
+.dark .urdu-arabic-content,
+.dark .english-content,
+.dark .wp-content {
+  color: #e5e5e5;
+}
+
+.dark .wp-content h1,
+.dark .wp-content h2,
+.dark .wp-content h3,
+.dark .wp-content h4,
+.dark .wp-content h5,
+.dark .wp-content h6 {
+  color: #fafafa;
+}
+
+/* Dark mode categories */
+.dark .category-filter {
+  background: #374151;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+.dark .category-filter:hover {
+  background: #4b5563;
+}
+
+.dark .category-filter.active {
+  background: #991b1b;
+  color: white;
+  border-color: #991b1b;
+}
+
+.dark .subcategories-menu {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.dark .subcategory-item {
+  color: #d1d5db;
+}
+
+.dark .subcategory-item:hover {
+  background-color: #374151;
+}
+
+.dark .subcategory-item.active {
+  background-color: #7f1d1d;
+  color: #fef2f2;
+}
+
+.dark .category-button {
+  background: #374151;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+.dark .category-button:hover {
+  background: #4b5563;
+}
+
+.dark .category-button.active {
+  background: #991b1b;
+  color: white;
+  border-color: #991b1b;
+}
+
+.dark .active-filter-badge {
+  background: #1e3a8a;
+  border-color: #3730a3;
+  color: #dbeafe;
+}
+
+.dark .clear-filter-button {
+  color: #60a5fa;
+}
+
+.dark .clear-filter-button:hover {
+  color: #3b82f6;
+  background: #1e3a8a;
+}
+
+/* ========== DARK MODE UTILITY CLASSES ========== */
+.dark .bg-white {
+  background-color: #1f2937;
+}
+
+.dark .bg-gray-50 {
+  background-color: #111827;
+}
+
+.dark .bg-gray-100 {
+  background-color: #374151;
+}
+
+.dark .text-gray-900 {
+  color: #f9fafb;
+}
+
+.dark .text-gray-700 {
+  color: #e5e7eb;
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db;
+}
+
+.dark .text-gray-500 {
+  color: #9ca3af;
+}
+
+.dark .border-gray-200 {
+  border-color: #374151;
+}
+
+.dark .border-gray-300 {
+  border-color: #4b5563;
+}
+
+.dark .bg-red-50 {
+  background-color: #7f1d1d;
+}
+
+.dark .bg-red-900 {
+  background-color: #991b1b;
+}
+
+.dark .text-red-900 {
+  color: #fca5a5;
+}
+
+.dark .border-red-900 {
+  border-color: #991b1b;
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+/* Critical image optimization - REMOVE fetchpriority */
+.critical-img {
+  content-visibility: auto;
+  /* fetchpriority: high; REMOVE THIS LINE */
+}
+
+/* Reduce layout shifts */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optimize animations */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========== ACCESSIBILITY IMPROVEMENTS ========== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* ========== RESPONSIVE IMPROVEMENTS ========== */
+@media (max-width: 640px) {
+  .wp-content h1 { font-size: 1.75rem; }
+  .wp-content h2 { font-size: 1.5rem; }
+  .wp-content h3 { font-size: 1.25rem; }
+  
+  .wp-content.urdu-arabic-content h1 { font-size: 1.9rem; }
+  .wp-content.urdu-arabic-content h2 { font-size: 1.6rem; }
+  .wp-content.urdu-arabic-content h3 { font-size: 1.4rem; }
+  
+  .category-button,
+  .category-filter {
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .categories-container {
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  /* Mobile image adjustments */
+  .card-image {
+    height: 200px;
+  }
+  
+  .post-image {
+    height: 300px;
+  }
+  
+  .banner-image {
+    height: 350px;
+  }
+}
+
+/* ========== FIX FOR DARK READER CONFLICTS ========== */
+[data-darkreader-inline-bgcolor],
+[data-darkreader-inline-color],
+[data-darkreader-inline-fill],
+[data-darkreader-inline-stroke],
+[data-darkreader-inline-border] {
+  all: unset;
+}
+
+/* ========== CUSTOM SHADOW FIX ========== */
+.hover\:shadow-\[-7px_7px_0px_\#8b0000\]:hover {
+  box-shadow: -7px 7px 0px #8b0000;
+}
+
+.dark .hover\:shadow-\[-7px_7px_0px_\#8b0000\]:hover {
+  box-shadow: -7px 7px 0px #7f1d1d;
 }

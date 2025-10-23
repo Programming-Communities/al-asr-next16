@@ -1,0 +1,55 @@
+ 
++---app
+|   |   favicon.ico
+|   |   globals.css
+|   |   layout.tsx
+|   |   page.tsx
+|   |   
+|   \---posts
+|       |   PostClient.jsx
+|       |   
+|       \---[slug]
+|               page.js
+|               
++---Components
+|   +---blog
+|   |       BlogItem.jsx
+|   |       BlogList.jsx
+|   |       CategoryFilter.jsx
+|   |       PostClient.jsx
+|   |       
+|   +---layout
+|   |       Header.jsx
+|   |       
+|   +---shared
+|   |       SkeletonLoader.jsx
+|   |       SocialShareButtons.jsx
+|   |       
+|   +---theme
+|   |       mode-toggle.js
+|   |       theme-provider.js
+|   |       
+|   \---ui
+|           button.js
+|           dropdown-menu.js
+|           
++---constants
++---hooks
++---lib
+|       fonts.js
+|       utils.js
+|       wordpress.js
+|       
+
+|           
++---public
+|   |   logo.png
+|   |   logo1.png
+|   |   og-image.jpg
+|   |   og-image.png
+|   |   
+|   \---fonts
+|           jameel-noori-nastaleeq.ttf
+|           
++---types
+\---utils
