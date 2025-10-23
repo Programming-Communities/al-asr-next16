@@ -21,8 +21,8 @@ const Header = () => {
               <Image
                 src="/logo.png"
                 alt="Al-Asr (Islamic Service)"
-                width={160}
-                height={60}
+                width={80}
+                height={40}
                 className="w-auto h-auto max-w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
                 priority
               />
